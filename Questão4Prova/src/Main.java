@@ -14,8 +14,8 @@ public class Main {
 
         BibliotecaView bibliotecaView = new BibliotecaView();
 
-        bibliotecaController.criarTabelaBiblioteca();
         generoController.criarTabelaGenero();
+        bibliotecaController.criarTabelaBiblioteca();
         livroController.criarTabelaLivro();
 
         bibliotecaView.menuInicio();

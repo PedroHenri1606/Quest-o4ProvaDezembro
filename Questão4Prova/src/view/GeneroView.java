@@ -33,14 +33,14 @@ public class GeneroView {
 
         try {
             for(Genero genero: list){
-                object[i] = (genero.getId()+ "|" + genero.getNome());
+                object[i] = (genero.getId()+ " | " + genero.getNome());
                 i++;
             }
 
             Object selectionObjetec = JOptionPane.showInputDialog(jFrame,"ESCOLHA UM GENERO:","BiBlioshow",JOptionPane.QUESTION_MESSAGE,null,object,object[0]);
             String tmp = selectionObjetec.toString();
             StringTokenizer st = new StringTokenizer(tmp);
-            id = Integer.valueOf(st.nextToken("|"));
+            id = Integer.valueOf(st.nextToken(" | "));
         } catch (Exception e){
             e.printStackTrace();
         }

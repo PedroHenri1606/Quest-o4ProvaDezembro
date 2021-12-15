@@ -7,8 +7,17 @@ public class Livro {
     private long quantFolhas;
     private Genero genero;
     private String autor;
+    private Biblioteca idBiblioteca;
 
     public Livro() {
+    }
+
+    public Biblioteca getIdBiblioteca() {
+        return idBiblioteca;
+    }
+
+    public void setIdBiblioteca(Biblioteca idBiblioteca) {
+        this.idBiblioteca = idBiblioteca;
     }
 
     public long getId() {

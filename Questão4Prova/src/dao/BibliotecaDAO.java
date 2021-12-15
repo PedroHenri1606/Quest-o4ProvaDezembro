@@ -2,11 +2,15 @@ package dao;
 
 import factory.Factory;
 import model.Biblioteca;
+import model.Genero;
+import model.Livro;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BibliotecaDAO {
 
@@ -90,5 +94,51 @@ public class BibliotecaDAO {
         }catch (SQLException e){
             throw new RuntimeException(e);
         }
+    }
+    public List<Biblioteca> listar(){
+
+        String sql = "SELECT * FROM questao4prova.biblioteca";
+
+        try {
+            PreparedStatement statement = this.connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+            ArrayList bibliotecas = new ArrayList();
+
+            while (resultSet.next()) {
+                Biblioteca biblioteca = new Biblioteca();
+                biblioteca.setId(resultSet.getLong("id_biblioteca"));
+                biblioteca.setNome(resultSet.getString("nome"));
+
+                bibliotecas.add(biblioteca);
+            }
+            return bibliotecas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Biblioteca determinaBiblioteca(int id) {
+
+        String sql = "SELECT * FROM biblioteca where id_biblioteca = " + id;
+        List<Biblioteca> bibliotecas = new ArrayList();
+        Biblioteca biblioteca = new Biblioteca();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                biblioteca.setId(resultSet.getInt("id_biblioteca"));
+                biblioteca.setNome(resultSet.getString("nome"));
+                bibliotecas.add(biblioteca);
+            }
+            statement.execute();
+            statement.close();
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return biblioteca;
     }
 }

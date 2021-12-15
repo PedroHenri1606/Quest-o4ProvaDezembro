@@ -1,11 +1,9 @@
 package dao;
 
-import com.mysql.cj.protocol.Resultset;
+
 import factory.Factory;
-import model.Biblioteca;
 import model.Genero;
 
-import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
